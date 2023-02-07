@@ -27,7 +27,7 @@ jobs:
     - name: Publish ZScript nuget to nuget.org
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
-          PROJECT_FILE_PATH: _src/zscript/zscript
+          PROJECT_FILE_PATH: _src/zscript/zscript.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
           VERSION_STATIC: ${{ env.VERSION }}
           TAG_COMMIT: false
