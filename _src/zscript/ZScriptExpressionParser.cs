@@ -16,6 +16,7 @@ namespace Zoka.ZScript
 			Numbers,
 			UnderScore,
 			WhiteSpaces,
+			Punctuations,
 		}
 
 
@@ -133,7 +134,7 @@ namespace Zoka.ZScript
 			}
 			else
 			{
-				literal = ConsumeCharacters(_s, ref _start_position, new[] { CharacterClass.AllLetters, CharacterClass.UnderScore }, new[] { CharacterClass.AllLetters, CharacterClass.UnderScore, CharacterClass.Numbers });
+				literal = ConsumeCharacters(_s, ref _start_position, new[] { CharacterClass.AllLetters, CharacterClass.UnderScore  }, new[] { CharacterClass.AllLetters, CharacterClass.UnderScore, CharacterClass.Numbers, CharacterClass.Punctuations });
 			}
 			if (string.IsNullOrEmpty(literal))
 				throw new FormatException("Literal may not be empty.");
@@ -277,6 +278,8 @@ namespace Zoka.ZScript
 				yield return CharacterClass.Numbers;
 			if (Char.IsWhiteSpace(_c))
 				yield return CharacterClass.WhiteSpaces;
+			if (Char.IsPunctuation(_c))
+				yield return CharacterClass.Punctuations;
 			if (_c == '_')
 				yield return CharacterClass.UnderScore;
 
